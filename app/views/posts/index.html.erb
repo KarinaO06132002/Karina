@@ -1,0 +1,57 @@
+<div class="post-top">
+<h1>Spotlight</h1>
+</div>
+
+
+<div class="background-offwhite">
+</div>
+
+<div class="post-middle">
+</div>
+
+<h3>スポット一覧ページ</h3>
+<%= link_to "新規投稿へ", new_post_path %>
+
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
+
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <div class="post">
+      <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+      <%= link_to t.user.name, user_path(t.user.id) %> 
+      <%= t.name %>
+      <%= t.area %>
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <%= t.adress %>
+      <%= t.point %>
+
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+          <%= button_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+      <% else %>
+          <%= button_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+      <% end %>
+    <% else %>
+      <i class="fas fa-heart"></i><%= t.likes.count %>
+    <% end %>
+
+      <%= link_to "詳細へ", post_path(t.id) %>
+    <% if user_signed_in? && current_user.id == t.user_id %>
+      <%= link_to "編集する", edit_post_path(t.id) %>
+      <%= button_to "削除する", post_path(t.id), method: :delete %>
+    <% end %> 
+    </div>
+  <% end %>
+</div>

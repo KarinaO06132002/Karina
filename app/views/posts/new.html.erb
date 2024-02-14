@@ -1,0 +1,30 @@
+<h3>新規投稿ページ</h3>
+<%= form_for @post do |f| %>
+  <div class="field">
+    <%= f.label :スポット名 %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :エリア %>
+    <%= f.text_field :area, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :所在地 %>
+    <%= f.text_field :adress, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :イメージ %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ポイント  %>
+    <%= f.text_area :point, :size => "30x2" %>
+  </div>
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "スポット一覧に戻る", posts_path %>
