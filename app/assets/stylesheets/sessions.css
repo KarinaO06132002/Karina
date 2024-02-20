@@ -1,0 +1,109 @@
+
+@import "compass/css3";
+
+body {
+  background-color: #F7F7F5;
+  font-family: Segoe Script;
+  line-height: 2.5;
+  font-size: 1.5em;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.login-form-container {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 350px;
+  border-radius: px;
+  background-color: #FCFFEE;
+  overflow: hidden;
+  .denied & {
+    animation: shake 0.35s normal forwards ease-in-out;
+  }
+  fieldset {
+    border: none;
+  }
+  header {
+    background-color: #F9FFDE;
+    color: black;
+    display: block;
+    padding: 1.5em;
+    text-align: center;
+  }
+  .input-wrapper {
+    position: relative;
+    display: block;
+    margin: 2em auto;
+    border-bottom: 1px solid #FC7148;
+    border-radius: 3px;
+    width: 250px;
+    input {
+      width: 100%;
+      line-height: 2;
+      background-color: transparent;
+      border: none;
+      padding: .6em .5em;
+      outline: 0;
+      &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+        color: #9EA2AB;
+      }
+    }
+  }
+
+  .input-one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .input-second{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .field {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+  }
+  
+  .actions{
+    text-align: center;
+  }
+  
+  .button {
+    display       : inline-block;
+    border-radius : 5%;
+    font-size     : 12pt;
+    font-family : HGSｺﾞｼｯｸM;
+    text-align    : center;
+    cursor        : pointer;
+    padding       : 12px 12px; 
+    background    : #fc7148; 
+    color         : #000000;
+    line-height   : 1em; 
+    transition    : .3s; 
+    border        : 2px solid #fc7148;
+  }
+}
+
+@keyframes shake {
+  0% { margin-left: 0 }
+  12% { margin-left: 0 }
+  25% { margin-left: -10px }
+  50% { margin-left: 10px }
+  75% { margin-left: -10px }
+  87% { margin-left: 0 }
+  100% { margin-left: 0 }
+}

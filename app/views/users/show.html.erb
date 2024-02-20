@@ -1,17 +1,79 @@
-<h1>users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<%= image_tag @user.image_url, size: "250x200" if @user.image? %>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<div class="mypage">
+<h2>マイページ</h2>
+</div>
 
+<div class="myicon">
+<%= image_tag @user.image_url, size: "130x130", class: "circular-image" if @user.image? %>
+</div>
+
+<div class="name-address">
+<h1><%= @user.name %></h1>
+<p><%= @user.email %></p>
+</div>
+
+<div class="user-profile">
+<p>プロフィール : <%= @user.profile %></p>
+</div>
+
+<div class="edi-new">
 <% if current_user.id == @user.id %>
   <%= link_to "編集する", edit_user_registration_path %>
 <% end %>
+<i class="fa-solid fa-plus fa-2x"></i><%= link_to "新規投稿へ", new_post_path %>
+</div>
+
+<div class="userposts-container">
+　<div class="mylist-flow">
+    <ul>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+    </ul>
+    <ul>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+      <li>MY LIST</li>
+    </ul>
+  </div>
 
 <h2>ユーザーの投稿一覧</h2>
-<% @user.posts.each do |t| %>
-  <%= t.user.name %>
-  <%= t.point %>
-<% end %>
-
-<%= link_to "スポット一覧に戻る", posts_path %>
+  <div class="myposts-container">
+    <% @user.posts.each do |t| %>
+      <div class="mypost">
+      <li><%= image_tag t.image_url, size: "280x210", class: "spot-image" if t.image? %></li>
+        <div class="mypostname">
+        <li><%= t.name %></li>
+        </div>
+      
+      <li><%= t.area %></li>
+      
+ 
+        <div class="edi-del">
+        <%= link_to "詳細へ", post_path(t.id) %>
+        <% if user_signed_in? && current_user.id == t.user_id %>
+        <%= link_to "編集する", edit_post_path(t.id) %>
+        <%= button_to "削除する", post_path(t.id), method: :delete %>
+        </div>
+      <% end %> 
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="usershow-back">
+  <%= link_to "スポット一覧に戻る", posts_path %>
+  </div>
+</div>

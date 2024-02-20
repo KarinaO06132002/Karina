@@ -13,25 +13,19 @@
  *= require_tree .
  *= require_self
  */
- body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #FCFFEE;
+  body {
+    background-color: #F7F7F5;
+    margin: auto;
   }
 
-
-  
   header {
     background-color: #FCFFEE;
     height: 50px;
     color: black;
     padding: 0px 0;
-    text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    line-height: 50px;
   }
-
-
   
   .container {
     display: flex;
@@ -53,7 +47,13 @@
   
   .header-list {
     margin-top: 0px;
+    margin-left: 60%;
     justify-content: right;
+    font-family : HGSｺﾞｼｯｸM;
+    font-size : 21px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+    text-align: right;
   }
   
   ul {

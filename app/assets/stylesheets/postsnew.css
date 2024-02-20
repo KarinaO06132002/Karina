@@ -1,0 +1,17 @@
+.newtop{
+    margin: 0;
+    margin-left: 30px;
+}
+
+.newpost {
+    margin-left: 430px;
+}
+
+.newsubmit{
+    text-align: center;
+}
+
+.newback{
+    text-align: right;
+    margin-right: 30px;
+}

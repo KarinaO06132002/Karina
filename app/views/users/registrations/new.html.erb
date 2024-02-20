@@ -1,35 +1,40 @@
-<h2>Sign up</h2>
-
+<div id="signup" class="signup-form-container">
+<header>SIGN UP</header>
+<fieldset>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
   <!--サインアップ時に名前を入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+  <div class="input-wrapper">
+    <div class="input-1">
+    <i class="fa-solid fa-user" style="color:#FC7148;"></i>
+    <%= f.text_field :name, autofocus: true, placeholder: "your name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="input-2">
+    <i class="fa-solid fa-envelope fa-sm" style="color: #fc7148;"></i>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "your@email.com" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
+    <div class="input-3">
+      <div class="input-3one">
+      <i class="fa-solid fa-key fa-sm" style="color: #fc7148;"></i>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "password" %>
+      </div>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <p>(<%= @minimum_password_length %> characters minimum)</p>
+    <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="input-4">
+    <i class="fa-solid fa-key fa-sm"></i>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "password確認用" %>
+    </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</fieldset>
 
 <%= render "users/shared/links" %>

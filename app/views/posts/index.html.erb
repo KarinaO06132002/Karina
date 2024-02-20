@@ -9,49 +9,86 @@
 <div class="post-middle">
 </div>
 
-<h3>スポット一覧ページ</h3>
-<%= link_to "新規投稿へ", new_post_path %>
+<div class="spotlist-flow">
+    <ul>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+    </ul>
+    <ul>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+      <li>SPOT LIST</li>
+    </ul>
+  </div>
 
-<% if user_signed_in? %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-<% end %>
+<div class="spot-list">
+<h3>スポット一覧</h3>
+</div>
 
-<h3>投稿を検索</h3>
+<div class="spot-search">
  <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search %>
+   <%= text_field_tag :search, "都道府県市町村・キーワードで検索" %>
    <%= submit_tag '検索する'  %>
 <% end %>
+
+<i class="fa-solid fa-plus fa-2x"></i><%= link_to "新規投稿へ", new_post_path %>
+</div>
 
 <div class="posts-container">
   <% @posts.each do |t| %>
     <div class="post">
-      <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
-      <%= link_to t.user.name, user_path(t.user.id) %> 
-      <%= t.name %>
-      <%= t.area %>
-      <%= image_tag t.image_url, size: "250x200" if t.image? %>
-      <%= t.adress %>
-      <%= t.point %>
+      <div class="post-profile">
+      <%= image_tag t.user.image_url, size: "60x60", class: "circular-image" if t.user.image? %>
+      <%= link_to t.user.name, user_path(t.user.id) %>
+      </div>
+      <li><%= image_tag t.image_url, size: "280x210", class: "spot-image" if t.image? %></li>
+
+      <div class="spot-name">
+      <li><%= t.name %></li>
+      </div>
+
+      <div class="spot-area">
+      <p>ーーーーーーーー</p>
+      <li><%= t.area %></li>
+      </div>
+      
 
     <% if user_signed_in? %>
       <% if current_user.already_liked?(t) %>
-          <%= button_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
-            <i class="fas fa-heart"></i><%= t.likes.count %>
+          <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+            <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
           <% end %>
       <% else %>
-          <%= button_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
-            <i class="fas fa-heart"></i><%= t.likes.count %>
+          <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+            <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
           <% end %>
       <% end %>
     <% else %>
-      <i class="fas fa-heart"></i><%= t.likes.count %>
+      <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
     <% end %>
 
-      <%= link_to "詳細へ", post_path(t.id) %>
-    <% if user_signed_in? && current_user.id == t.user_id %>
+      <div class="edi-del">
+      <%= link_to "詳細へ", post_path(t.id) %> 
+      <% if user_signed_in? && current_user.id == t.user_id %>
       <%= link_to "編集する", edit_post_path(t.id) %>
       <%= button_to "削除する", post_path(t.id), method: :delete %>
-    <% end %> 
+      </div>
+    <% end %>
     </div>
   <% end %>
 </div>

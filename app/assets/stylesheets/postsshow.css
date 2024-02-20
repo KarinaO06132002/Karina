@@ -1,0 +1,93 @@
+.detail{
+    margin-left: 20px;
+}
+
+.detail-user{
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    p {
+        margin-top: 0%;
+        margin-bottom: 0%;
+        margin-left: 20px;
+    }
+}
+
+.share-detail{
+    display: flex;
+}
+
+.name-area{
+    margin-left: 60px;
+}
+
+.detail-name p{
+    font-family : HG創英角ｺﾞｼｯｸUB;
+    font-size : 60px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+    margin: 0%;  
+    padding-top: 10px; 
+}
+
+.detail-area {
+    h3 {
+        margin: 0%;
+    }
+    p{
+        margin: 0%;
+        color: #6D838D;
+    }   
+}
+
+.detail-image{
+    position: absolute;
+    right: 60px;
+}
+
+.detail-point{
+    margin-top: 130px;
+    border: 3px double #ccc;
+    width: 70%;
+    justify-content: center;
+    text-align: center;
+    margin-left: 180px;
+    display: flex;
+}
+
+.detail-heart{
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+.detail-edit {
+    font-size: 15px;
+    display: flex;
+    margin-left: 830px;
+    margin-right: 60px;
+    a{
+        margin-right: 20px;
+    }
+    form{
+        margin-right: 20px;
+    }
+}
+
+.heart-user{
+    margin-left: 60px;
+    h2{
+        text-align: left;
+        font-size: 20px;
+    }
+}
+
+.comment-wrapper{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.user-comment{
+    border: 3px solid #ccc;
+    margin-right: 60px;
+    border-radius: 8px;
+}

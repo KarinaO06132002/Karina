@@ -1,3 +1,102 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.mypage{
+  h2 {
+    margin-left: 60px;
+    text-align: left;
+  }
+}
+
+.myicon{
+  position: absolute;
+  top: 150px;
+  left: 60px;
+}
+
+.name-address{
+  text-align: left;
+  margin-left: 200px;
+  h1 {
+    margin-bottom: 0%;
+    font-size: 30px;
+  }
+  p {
+    margin-top: 0%;
+  }
+}
+
+.user-profile{
+  margin-left: 200px;
+}
+
+.edi-new{
+  text-align: right;
+  justify-content: center;
+  margin-right: 60px;
+  i{
+    margin-left: 30px;
+  }
+}
+
+.userposts-container{
+  background-color: #FCFFEE;
+}
+
+.mylist-flow{
+  align-items: center;
+  color: #96DEFF;
+  display: flex;
+  height: 60px;
+  line-height: 60px;
+  overflow:hidden;
+  width: 100%;
+  white-space:nowrap;
+  margin-top: 10px;
+  z-index: 1;
+}
+.mylist-flow ul {
+  animation: flowing 40s linear infinite;
+  font-family : HGS創英角ｺﾞｼｯｸUB;
+  font-size: 50px;
+  transform:translateX(100%);
+  margin: 0;
+  padding: 0;
+}
+.mylist-flow ul li{
+  display: inline-block;
+  padding-right: 10px;
+}
+@keyframes flowing {
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-100%); }
+}
+
+.myposts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+  
+.mypost {
+    padding: 20px;
+    border: 3px solid #ccc
+  }
+
+.mypost li {
+    display: flex;
+  }
+
+.mypostname {
+    font-family : HG創英角ｺﾞｼｯｸUB;
+    font-size : 30px;
+}
+
+.usershow-back{
+  text-align: right;
+  margin-right: 60px;
+}
