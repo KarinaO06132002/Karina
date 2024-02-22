@@ -15,11 +15,12 @@
 <p>プロフィール : <%= @user.profile %></p>
 </div>
 
+
 <div class="edi-new">
-<% if current_user.id == @user.id %>
-  <%= link_to "編集する", edit_user_registration_path %>
-<% end %>
-<i class="fa-solid fa-plus fa-2x"></i><%= link_to "新規投稿へ", new_post_path %>
+  <% if current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path, class: 'cafe-link' %>
+  <% end %>
+  <i class="fa-solid fa-plus fa-2x"></i><%= link_to "新規投稿へ", new_post_path, class: 'cafenew-link' %>
 </div>
 
 <div class="userposts-container">
@@ -59,14 +60,31 @@
         <li><%= t.name %></li>
         </div>
       
-      <li><%= t.area %></li>
+      <div class="mypost-area">
+        <p>ーーーーーーーー</p>
+        <li><%= t.area %></li>
+      </div>
+
+        <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+          <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+            <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+          <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+    <% end %>
       
  
         <div class="edi-del">
-        <%= link_to "詳細へ", post_path(t.id) %>
+        <%= link_to "詳細へ", post_path(t.id), class: 'cafedet-link' %>
         <% if user_signed_in? && current_user.id == t.user_id %>
-        <%= link_to "編集する", edit_post_path(t.id) %>
-        <%= button_to "削除する", post_path(t.id), method: :delete %>
+        <%= link_to "編集する", edit_post_path(t.id), class: 'cafe-link' %>
+        <%= button_to "削除する", post_path(t.id), method: :delete, class: 'cafe-delete-button' %>
         </div>
       <% end %> 
       </div>
@@ -74,6 +92,6 @@
   </div>
   
   <div class="usershow-back">
-  <%= link_to "スポット一覧に戻る", posts_path %>
+  <%= link_to "スポット一覧に戻る", posts_path, class: 'spot-link' %>
   </div>
 </div>

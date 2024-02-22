@@ -41,54 +41,54 @@
 </div>
 
 <div class="spot-search">
- <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search, "都道府県市町村・キーワードで検索" %>
-   <%= submit_tag '検索する'  %>
-<% end %>
+  <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+    <%= text_field_tag :search, "都道府県市町村・キーワードで検索" %>
+    <%= submit_tag '検索する'  %>
+  <% end %>
 
-<i class="fa-solid fa-plus fa-2x"></i><%= link_to "新規投稿へ", new_post_path %>
+  <i class="fa-solid fa-plus fa-2x"></i><%= link_to "新規投稿へ", new_post_path, class: 'cafenew-link' %>
 </div>
 
 <div class="posts-container">
-  <% @posts.each do |t| %>
-    <div class="post">
-      <div class="post-profile">
-      <%= image_tag t.user.image_url, size: "60x60", class: "circular-image" if t.user.image? %>
-      <%= link_to t.user.name, user_path(t.user.id) %>
-      </div>
-      <li><%= image_tag t.image_url, size: "280x210", class: "spot-image" if t.image? %></li>
+    <% @posts.each do |t| %>
+      <div class="post">
+        <div class="post-profile">
+          <%= image_tag t.user.image_url, size: "60x60", class: "circular-image" if t.user.image? %>
+          <%= link_to t.user.name, user_path(t.user.id) %>
+        </div>
+        <li><%= image_tag t.image_url, size: "280x210", class: "spot-image" if t.image? %></li>
 
-      <div class="spot-name">
-      <li><%= t.name %></li>
-      </div>
+        <div class="spot-name">
+          <li><%= t.name %></li>
+        </div>
 
-      <div class="spot-area">
-      <p>ーーーーーーーー</p>
-      <li><%= t.area %></li>
-      </div>
-      
+        <div class="spot-area">
+          <p>ーーーーーーーー</p>
+          <li><%= t.area %></li>
+        </div>
+        
 
-    <% if user_signed_in? %>
-      <% if current_user.already_liked?(t) %>
-          <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
-            <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+        <% if user_signed_in? %>
+            <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+              <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+            <% end %>
           <% end %>
-      <% else %>
-          <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
-            <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
-          <% end %>
-      <% end %>
-    <% else %>
-      <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
-    <% end %>
+        <% else %>
+          <i class="fa-solid fa-heart fa-2xl" style="color: #e1a3c7;"></i><%= t.likes.count %>
+        <% end %>
 
-      <div class="edi-del">
-      <%= link_to "詳細へ", post_path(t.id) %> 
-      <% if user_signed_in? && current_user.id == t.user_id %>
-      <%= link_to "編集する", edit_post_path(t.id) %>
-      <%= button_to "削除する", post_path(t.id), method: :delete %>
+          <div class="edi-del">
+            <%= link_to "詳細へ", post_path(t.id), class: 'cafedet-link' %> 
+            <% if user_signed_in? && current_user.id == t.user_id %>
+              <%= link_to "編集する", edit_post_path(t.id), class: 'cafe-link' %>
+              <%= button_to "削除する", post_path(t.id), method: :delete, class: 'cafe-delete-button' %>
+            <% end %>
+          </div>
       </div>
-    <% end %>
-    </div>
   <% end %>
 </div>

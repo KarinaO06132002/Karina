@@ -66,3 +66,43 @@
   li {
     margin: 0 15px;
   }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    li{
+      margin-left: 0;
+    }
+  }
+  
+  .nav-item {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #795548; 
+  }
+  
+  .logout-btn {
+    background-color: #795548; 
+    border: none;
+    padding: 8px 16px;
+    color: #fff; 
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background-color: #a1887f; 
+  }
+  
+  .signup-link,
+  .login-link {
+    text-decoration: none;
+    color: #795548; 
+  }

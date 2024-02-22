@@ -16,17 +16,17 @@
   <header>
     <div class="container">
      <h2>Spotlight</h2>
-      <div class="header-list">
-        <ul>
-          <% if user_signed_in? %>
-            <li><%= link_to "マイページへ", user_path(current_user.id) %></li>
-            <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-btn' %></li>
-          <% else %>
-            <li><%= link_to "新規登録", new_user_registration_path, class: 'signup-link' %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: 'login-link' %></li>
-          <% end %>
+       <div class="header-list">
+        <ul class="nav-list">
+         <% if user_signed_in? %>
+           <i class="fa-solid fa-house fa-lg"></i><li><%= link_to "マイページへ", user_path(current_user.id), class: 'nav-item' %></li>
+           <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-item logout-btn' %></li>
+         <% else %>
+           <i class="fa-regular fa-square-plus fa-lg"></i><li><%= link_to "新規登録", new_user_registration_path, class: 'nav-item signup-link' %></li>
+           <i class="fa-solid fa-right-to-bracket fa-lg"></i><li><%= link_to "ログイン", new_user_session_path, class: 'nav-item login-link' %></li>
+         <% end %>
         </ul>
-      </div>
+       </div>
     </div>
   </header>
 

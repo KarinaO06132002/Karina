@@ -76,8 +76,8 @@
   <% end %>
 </div>
 
-<div class="detail-edit">   
-<%= link_to "編集する", edit_post_path(@post.id) %>
-<%= button_to "削除する", post_path(@post.id), method: :delete %>
-<%= link_to "スポット一覧に戻る", posts_path %>
+<div class="detail-edit">
+  <%= link_to "編集する", edit_post_path(@post.id), class: 'cafedet-link' %>
+  <%= button_to "削除する", post_path(@post.id), method: :delete, class: 'cafe-delete-button' %>
+  <%= link_to "スポット一覧に戻る", posts_path, class: 'spot-link' %>
 </div>

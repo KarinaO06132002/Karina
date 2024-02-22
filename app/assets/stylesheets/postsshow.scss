@@ -63,14 +63,18 @@
 
 .detail-edit {
     font-size: 15px;
-    display: flex;
-    margin-left: 830px;
+    margin-left: 600px;
     margin-right: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
     a{
         margin-right: 20px;
     }
     form{
-        margin-right: 20px;
+        margin-right: 200px;
     }
 }
 
@@ -91,4 +95,11 @@
     border: 3px solid #ccc;
     margin-right: 60px;
     border-radius: 8px;
+}
+
+.spot-link{
+    text-decoration: none;
+    color: #795548;
+    font-family: HG創英角ｺﾞｼｯｸUB;
+    font-size: larger;
 }
